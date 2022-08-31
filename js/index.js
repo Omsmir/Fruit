@@ -10,6 +10,9 @@ let minus = document.querySelector(".more .minus")
 let plus = document.querySelector(".more .plus")
 let num = document.querySelector(".more .num")
 
+let About = document.getElementById("About")
+
+let nav = document.querySelector(".navbar")
 
 li.forEach((ele) => {
    ele.addEventListener("click" ,() => {
@@ -17,24 +20,13 @@ li.forEach((ele) => {
         return true
 
     }else {
-        li.forEach((el) => {
-            el.classList.remove("active")
-        })
-        section.forEach((ele) => {
-            if(ele.classList.contains("none")){
-                ele.classList.toggle("none")
-                ele.classList.toggle("visible")
-            }else{
-                ele.classList.toggle("none")
-                section.forEach((el  ) => {
-                    el.classList.remove("visible")
-                })
-            }
-        })
+       removeAllActive()
         ele.classList.add("active")
     }
    })
 })
+
+
 
 console.log(section)
 
@@ -44,9 +36,7 @@ image.forEach((ele) => {
         if(ele.classList.contains("active")){
             return true
         }else {
-            image.forEach((el) => {
-                el.classList.remove("active")
-            })
+            removeAllActive(image)
             ele.classList.add("active")
             headerImage.src = "imgs/" + ele.classList[0] + ".jpg"
 
@@ -77,3 +67,52 @@ plus.addEventListener("click",() => {
     num.textContent = n
 })
 
+
+
+  AOS.init();
+
+
+console.log(section[2].offsetTop)
+
+ onscroll = function(){
+
+    let position = document.documentElement.scrollTop
+
+        if(position >= section[1].offsetHeight && position < section[1].offsetHeight + section[2].offsetHeight) {
+                nav.classList.add("back");
+        }else {
+            nav.classList.remove("back")
+        }
+
+  
+
+
+
+    section.forEach((ele) => {
+        if(position >= ele.offsetTop - ele.offsetHeight * .25 && 
+            position < ele.offsetTop + ele.offsetHeight -ele.offsetHeight * .25) {
+                let currentId = ele.attributes.id.value
+
+                removeAllActive(li)
+                addActive(currentId)
+
+            }
+    })
+}
+
+var removeAllActive = function(para){
+    para.forEach((ele) => {
+        ele.classList.remove("active")
+    })
+  }
+
+
+  var addActive = function(id){
+    let select = `.navbar-nav li a[href="#${id}"]`
+
+
+    document.querySelector(select).classList.add("active")
+  }
+
+
+console.log(nav)
