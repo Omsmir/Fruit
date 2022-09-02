@@ -14,22 +14,26 @@
 <meta property="og:url" content="https://omsmir.github.io/Fruit">
 <meta property="og:title" content="Fruit Store">
 <meta property="og:description" content="Online Fruit - Store Under-Building">
-<meta property="og:image" content="imgs/Fruit.png">
+<meta property="og:image" content="./imgs/About.jpg">
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:url" content="https://omsmir.github.io/Fruit">
 <meta property="twitter:title" content="Fruit Store ">
 <meta property="twitter:description" content="Online Fruit - Store Under-Building">
-<meta property="twitter:image" content="imgs/Fruit.png">
-
+<meta property="twitter:image" content="./imgs/About.jpg">
+<!-- Icon -->
+<link rel="icon" href="imgs/apple.png" type="image/x-icon">
+<!-- Css Files -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/all.min.css">
+<!-- Font Links -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,500;1,700;1,900&display=swap" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700;800&display=swap" rel="stylesheet"> 
+   <!-- Aos Js-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/brands.min.css" integrity="sha512-nS1/hdh2b0U8SeA8tlo7QblY6rY6C+MgkZIeRzJQQvMsFfMQFUKp+cgMN2Uuy+OtbQ4RoLMIlO2iF7bIEY3Oyg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/fontawesome.min.css" integrity="sha512-R+xPS2VPCAFvLRy+I4PgbwkWjw1z5B5gNDYgJN5LfzV4gGNeRQyVrY7Uk59rX+c8tzz63j8DeZPLqmXvBxj8pA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -53,8 +57,12 @@
                 <a class="nav-link" href="#Products">Products</a>
                 </li>
                 <li class="nav-item">
+                <a class="nav-link" href="#Sales" >Sales</a>
+                </li>
+                <li class="nav-item">
                 <a class="nav-link" href="#Contacts" >Contacts</a>
                 </li>
+                
               <form class="d-flex pcart">
     <button class="cart main">My Cart<i class="fa-solid fa-cart-shopping"></i></button>
               </form> 
@@ -62,12 +70,12 @@
           </div>
         </div>
       </nav>
-<section class="home pt-5" id="Home">
+<section class="home pt-5 pb-5" id="Home">
     <div class="container-fluid">
         <div class="row ">
             <div class="col-lg-7 pt-5 ps-5">
                 <div class="text">
-                    <h1 class="mb-4">Too much fruit is too good.</h1>
+                    <h1 class="mb-4">Too much fruit is too <span class="auto">good</span>.</h1>
                     <p class="text-black-50 text-capitalize mb-4">we put a premium on our fruits and they're always farm-fresh and delicious</p>
                     <button class="order ps-3 pe-3 main" type="button">order now <i class="fa-solid fa-arrow-right"></i></button>
                 </div>
@@ -134,8 +142,8 @@
             <img src="imgs/kiwi3.jpg" class="img-fluid"  alt="">
         </header>
         <span class="row mt-5" id="images">
-            <span class="col-lg-3 col-md-3 col-sm-3 pic"><img src="imgs/kiwi2.jpg" class="kiwi2 img-fluid" alt=""></span>
             <span class="col-lg-3 col-md-3 col-sm-3 pic"><img src="imgs/kiwi1.jpg" class="kiwi1 img-fluid" alt=""></span>
+            <span class="col-lg-3 col-md-3 col-sm-3 pic"><img src="imgs/kiwi2.jpg" class="kiwi2 img-fluid" alt=""></span>
             <span class="col-lg-3 col-md-3 col-sm-3 pic "><img src="imgs/kiwi3.jpg" class="kiwi3 img-fluid active" alt=""></span>
             <span class="col-lg-3 col-md-3 col-sm-3 pic"><img src="imgs/kiwi4.jpg" class="kiwi4 img-fluid" alt=""></span>
         </span>
@@ -144,9 +152,42 @@
             
     </div>
 </section>
+
+<section class="Our-sales pt-5 pb-5" id="Sales">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+               <div class="content">
+                <span class="circle rounded-circle">
+                    <article class="article d-flex flex-column justify-content-center align-items-center text-white">
+                        <h2 class="text-capitilize mb-4">Our Sales 2021</h2>
+                        <p class="fs-6 text-center">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum odit ut perferendis sed quo quia asperiores obcaecati! Aliquid consequuntur ipsam necessitatibus, reiciendis dolorum ad nam iure corrupti ducimus repellat quam?</p>
+                    </article>
+                </span>
+                
+               </div>
+            </div>
+            <div class="col-lg-4 col-md-6 ">
+                <canvas id="myChart" width="500" height="400"></canvas>          
+              </div>
+              <div class="col-lg-2 ps-0 pe-0 ">
+                <div class="years position-relative">
+                    <ul class="d-flex position-relative">
+                        <li class="list-unstyled" data-attr="185 1825 2000 1400 815 745" id="2018">2018</li>
+                        <li class="list-unstyled" data-attr="2540 199 1500 1990 700 340" id="2019">2019</li>
+                        <li class="list-unstyled" data-attr="185 780 2405 200 1500 604" id="2020">2020</li>
+                        <li class="list-unstyled active" data-attr="185 1825 500 1400 815 745" id="2021">2021</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/index.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/index.js"></script>
     <script src="js/all.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

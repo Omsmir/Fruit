@@ -7,6 +7,10 @@
   scroll-behavior: smooth;
 }
 
+
+section {
+  overflow: hidden;
+}
 h1::selection,p::selection,h3::selection {
   background:aliceblue;
   color: #c6a41f;
@@ -123,7 +127,10 @@ ul li a:hover {
   text-align: left;
   padding-right: 45px;
 }
-
+.text h1 span {
+  background-color:  var(--green-color) ;
+  color: var(--section-color);
+}
 .text p {
   width: 450px;
   font-size: 20px;
@@ -261,11 +268,6 @@ nav.links ul li a:hover svg.fa-twitter{
 .wrapper #images {
   width: 100%;
   height: 150px;
-  /* display: grid;
-  gap:20px 20px;
-  grid-template-columns: repeat(auto-fill,minmax(150px,auto));
-  justify-content: center;
-  align-items: center; */
 }
 
 #images .pic {
@@ -280,9 +282,6 @@ nav.links ul li a:hover svg.fa-twitter{
   border: 3px solid var(--green-color);
   transform: scale(1.1);
 }
-/* #images .pic:not(:last-of-type){
-  margin-right: 65px;
-} */
 
 .content .text .sign {
   display: flex;
@@ -332,8 +331,73 @@ nav.links ul li a:hover svg.fa-twitter{
 }
 
 
+/* Sales Start */
 
+section[id="Sales"] {
+  background-color: var(--section-color);
+}
 
+section[id="Sales"] .content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section[id="Sales"] .circle {
+  display: flex;
+  justify-content:center;
+  width: 400px;
+  height: 400px;
+  background-color: #0593F9;
+  transition: 0.3s ease-in-out;
+}
+
+section[id="Sales"] .years {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section[id="Sales"] .years ul {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  left: 0;
+  padding-left: 0 !important;
+}
+section[id="Sales"] .years ul li {
+  margin-bottom: 25px;
+  margin-right: 0 !important;
+  transition: 0.3s ease-in-out !important;
+  cursor: pointer;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  border: 1px solid var(--green-color);
+  border-right: 0;
+  padding: 5px;
+  width: 50px;
+}
+.years ul li.active {
+  background-color: #0593F9 !important;
+  color: #fff !important;
+  width: 70px !important;
+}
+
+section[id="Sales"] .years ul li:hover {
+  background-color: var(--green-color);
+  color: #fff !important;
+  width: 70px;
+}
+
+@media (max-width:1198px) {
+  canvas {
+    height: 100% !important;
+  }
+  
+}
 @media (max-width: 974px) {
   form {
     margin-right: 0rem !important;
@@ -364,12 +428,39 @@ nav.links ul li a:hover svg.fa-twitter{
   .navbar {
     background-color: aliceblue;
   }
+  section[id="Sales"] .years  {
+    margin-top: 30px;
+  }
+  section[id="Sales"] .years ul {
+    flex-direction: row;
+    margin-bottom: 0;
+  }
+  section[id="Sales"] .years ul li {
+    margin-bottom: 0;
+    width: calc(100% /4);
+    border-right: 1px solid var(--green-color);
+    transform: translateY(15px);
+  }
+  section[id="Sales"] .years ul li:hover {
+    width: 25%;
+    transform: translateY(0);
+  }
+  section[id="Sales"] .years ul li.active {
+    width: 25% !important;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 767px) {
   section[id='About']::before {
     font-size: 125px;
     left: 25%;
+  }
+  .wrapper #images {
+    height: auto;
+  }
+  canvas {
+    margin-top: 30px;
   }
 }
 
@@ -384,6 +475,7 @@ nav.links ul li a:hover svg.fa-twitter{
     justify-content: center;
     align-items: center;
   }
+
 }
 
 @media(max-width:476px) {
@@ -391,6 +483,16 @@ nav.links ul li a:hover svg.fa-twitter{
     font-size: 100px;
     left: 25%;
     top: 25%;
+  }
+  .circle {
+    width: 300px !important;
+    height:300px !important;
+  }
+  .circle article h2 {
+    font-size: 18px !important;
+  }
+  .circle article p {
+    font-size: 14px !important;
   }
 }
 
