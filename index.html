@@ -26,6 +26,7 @@
 <link rel="icon" href="imgs/apple.png" type="image/x-icon">
 <!-- Css Files -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mediaQ.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/all.min.css">
 <!-- Font Links -->
@@ -39,6 +40,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
+    <div class="over"></div>  
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand " href="#">Fruita</a>
@@ -60,17 +62,56 @@
                 <a class="nav-link" href="#Sales" >Sales</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#Contacts" >Contacts</a>
+                <a class="nav-link" href="#Contact-us" >Contacts</a>
                 </li>
                 
-              <form class="d-flex pcart">
-    <button class="cart main">My Cart<i class="fa-solid fa-cart-shopping"></i></button>
+              <form class="d-flex pcart position-relative">
+    <span class="cart main">My Cart<i class="fa-solid fa-cart-shopping"></i><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary notification">
+        $</span>
               </form> 
             </ul>
           </div>
         </div>
       </nav>
-<section class="home pt-5 pb-5" id="Home">
+<section class="home pt-5 pb-5 position-relative" id="Home">
+    <div class="shopping-cart position-fixed rounded-2 p-4">
+        <div class="exit position-absolute d-flex justify-content-center align-items-center rounded-circle me-1 mt-1">
+            <i class="fa-solid fa-circle-xmark"></i>
+        </div>
+             <div class="outer-layer d-flex justify-content-start align-items-center flex-column">
+                <div class="head d-flex justify-content-center align-items-center">
+                    <span class="list fw-bold" id="Product">Product</span>
+                    <span class="list fw-bold" id="Price">Price</span>
+                    <span class="list fw-bold" id="Quantity">Quantity</span>
+                    <span class="list fw-bold" id="Remove">Remove</span>
+                </div>
+                <div class="innerLayer mt-2 d-flex justify-content-start align-items-center">
+                    <!-- <div class="head-1">
+                    <span class="list fw-bold justify-content-start" id="Product">
+                        <div class="content d-flex flex-row justify-content-center align-items-center">
+                            <img src="imgs/kiwi2.jpg" class="rounded-2" id="product-img">
+                            <p class="text-black-50 text-capitalize mb-0 ms-3" id="desc">kiwi - fresh fruit</p>
+                        </div>
+                    </span>
+                    <span class="list fw-bold" id="Price">$</span>
+                    <span class="list fw-bold d-flex justify-content-center align-items-center" id="Quantity">
+                        <span class="minus bg-danger me-2">
+                            <i class="fa-solid fa-minus"></i></span> 1 
+                            <span class="plus bg-success ms-2">
+                                <i class="fa-solid fa-plus"></i>
+                            </span>   
+                    </span>
+                    <span class="list fw-bold" id="Remove">
+                        <div class="delete rounded-circle d-flex justify-content-center align-items-center">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </div>
+                    </span>
+                </div> -->
+
+                </div>          
+             </div>
+             <button value="Proceed To Checkout" id="Checkout" class="rounded-2 fw-bold border-0 text-white p-1" type="button">Proceed To Checkout</button>
+    </div>
     <div class="container-fluid">
         <div class="row ">
             <div class="col-lg-7 pt-5 ps-5">
@@ -119,44 +160,45 @@
         </div>
     </div>
 </section>
-
-<section class="Products pb-5 pt-5" id="Products">
+<section class="Products pt-5 pb-5" id="Products">
     <div class="container-fluid">
         <div class="row">
-            <div class="core ps-5 d-flex justify-content-center align-items-center">
+            <div class="core d-flex justify-content-center align-items-center">
       <div class="inner">
         <span class="content d-flex justify-content-lg-start text-left" data-aos="zoom-in" data-aos-duration="1000" >
             <div class="text">
-                <h1 class="text-capitalize fs-1 pe-0" >kiwi fruit - fresh</h1>
-                <span class="sign fs-2 fw-bold mb-5">$ <h3 class="fs-2 ms-1">5,49</h3></span>
-            <p class="text-black-50 text-capitalize fs-6">While kiwifruit is most often eaten as a snack, it does have many uses. Cross-merchandise it with iced tea, pitchers, berries, fruit salad ingredients and baking goods.</p>
+                <h1 class="text-capitalize fs-1 pe-0" id="productName" data-product-id="1">kiwi fruit - fresh</h1>
+                <span class="sign fs-2 fw-bold mb-5">$ <h3 class="fs-2 ms-1" id="productPrice">5.50</h3></span>
+            <p class="text-black-50 text-capitalize fs-6" id="productText">Buy kiwi, kiwifruit is most often eaten as a snack, it does have many uses. Cross-merchandise it with iced tea, pitchers, berries, fruit salad ingredients and baking goods.</p>
             <aside class="addToCart d-flex">
-                <div class="more"><span class="minus me-3">-</span> <div class="num">1</div> <span class="plus ms-3">+</span></div>
-                <button class="main text-uppercase checkout">Add to cart</button>
+                <div class="more"><span class="minus me-3">-</span> <div class="num" id="productCount">1</div> <span class="plus ms-3">+</span></div>
+                <button class="main text-uppercase checkout" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Added">Add to cart </button> 
             </aside>
         </div>
         </span>
       </div>
       <div class="wrapper d-flex justify-content-center align-items-center" id="wrapper" data-aos="zoom-in" data-aos-duration="1000" >
         <header>
-            <img src="imgs/kiwi3.jpg" class="img-fluid"  alt="">
+            <img src="imgs/kiwi2.jpg" class="img-fluid"  alt="" id="productImage">
         </header>
         <span class="row mt-5" id="images">
-            <span class="col-lg-3 col-md-3 col-sm-3 pic"><img src="imgs/kiwi1.jpg" class="kiwi1 img-fluid" alt=""></span>
-            <span class="col-lg-3 col-md-3 col-sm-3 pic"><img src="imgs/kiwi2.jpg" class="kiwi2 img-fluid" alt=""></span>
-            <span class="col-lg-3 col-md-3 col-sm-3 pic "><img src="imgs/kiwi3.jpg" class="kiwi3 img-fluid active" alt=""></span>
-            <span class="col-lg-3 col-md-3 col-sm-3 pic"><img src="imgs/kiwi4.jpg" class="kiwi4 img-fluid" alt=""></span>
+            <span class="col-lg-3 col-md-3 col-sm-3 pic"><img src="imgs/kiwi2.jpg" data-product-id="1" data-name="Kiwi fruit - fresh" data-text="Buy kiwi, kiwifruit is most often eaten as a snack, it does have many uses. Cross-merchandise it with iced tea, pitchers, berries, fruit salad ingredients and baking goods." data-price="5.50" class="kiwi2 img-fluid active" alt="" ></span>
+            <span class="col-lg-3 col-md-3 col-sm-3 pic"><img src="imgs/banana2.jpg" data-product-id="2" data-name="Banana fruit - fresh" data-text="Buy fresh organic bananas online and add them to your bowl of cereal for a healthy breakfast. Carrying a few bananas in your bag is easy " data-price="7.50" class="banana2 img-fluid"></span>
+            <span class="col-lg-3 col-md-3 col-sm-3 pic "><img src="imgs/mango.jpg" data-product-id="3" data-name="Mango fruit - fresh" data-text="Buy Fresh Mangoes Online. Like any fruit or vegetable, fresh mangoes can be difficult to find in the United States if it is not a particular season" data-price="15.90" class="mango img-fluid" alt=""></span>
+            <span class="col-lg-3 col-md-3 col-sm-3 pic"><img src="imgs/apple1.jpg" data-product-id="4" data-name="Apple fruit - fresh" data-text="Buy apple fruit online, Fresh Fruits Online Shopping, Wholesale Price & Mandi Rate, Seasonal fruits and vegetables from farmer organic fruit vegtable" data-price="11" class="apple1 img-fluid" alt=""></span>
         </span>
       </div>
             </div>
             
     </div>
+</div>
+
 </section>
 
 <section class="Our-sales pt-5 pb-5" id="Sales">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-6 col-md-6">
+            <div class="col-lg-5 col-md-6">
                <div class="content">
                 <span class="circle rounded-circle">
                     <article class="article d-flex flex-column justify-content-center align-items-center text-white">
@@ -167,13 +209,13 @@
                 
                </div>
             </div>
-            <div class="col-lg-4 col-md-6 ">
+            <div class="col-lg-5 col-md-6 ">
                 <canvas id="myChart" width="500" height="400"></canvas>          
               </div>
               <div class="col-lg-2 ps-0 pe-0 ">
                 <div class="years position-relative">
                     <ul class="d-flex position-relative">
-                        <li class="list-unstyled" data-attr="185 1825 2000 1400 815 745" id="2018">2018</li>
+                        <li class="list-unstyled" data-attr="185 1444 620 1400 515 1745" id="2018">2018</li>
                         <li class="list-unstyled" data-attr="2540 199 1500 1990 700 340" id="2019">2019</li>
                         <li class="list-unstyled" data-attr="185 780 2405 200 1500 604" id="2020">2020</li>
                         <li class="list-unstyled active" data-attr="185 1825 500 1400 815 745" id="2021">2021</li>
@@ -183,6 +225,78 @@
         </div>
     </div>
 </section>
+<section class="contact-us pt-5 pb-5" id="Contact-us">
+    <div class="container-fluid">
+        <div class="row">
+                <div class="col-lg-3 col-md-6 d-flex">
+                    <div id="content" class="overflow-hidden">
+                       <div class="text">
+                        <h2 class="text-uppercase text-white mb-4">Get In touch</h2>
+                        <h4 class="text-capitalize text-white mb-4 fs-6 ">We can ensure reliability, low cost fares and most important, with safety and comfort in mind.</h4>
+                        <p class="text-capitalize text-white fs-5 fw-light mb-4 ">
+                            Etiam sit amet convallis erat – class aptent taciti sociosqu ad litora torquent per conubia! Maecenas gravida lacus. Lorem etiam sit amet convallis erat.
+                        </p>
+                       </div>
+                       <div class="social-links">
+                        <ul class="d-flex justify-content-start align-items-center">
+                            <li class="text-white list-unstyled"><a href="https://www.facebook.com/OMAR.SAMIR.KA" target="_blank"><i class="fa-brands fa-facebook text-white"></i></a></li>
+                            <li class="text-white list-unstyled"><a href="https://www.linkedin.com/in/omar-samir-44377823a/" target="_blank"><i class="fa-brands fa-linkedin text-white"></i></a></li>
+                            <li class="text-white list-unstyled"><a href="https://twitter.com/Omsamiir" target="_blank"><i class="fa-brands fa-twitter text-white"></i></a></li>
+                            <li class="text-white list-unstyled"><a href="https://www.behance.net/omsamir" target="_blank"><i class="fa-brands fa-behance text-white"></i></a></li>
+                            <li class="text-white list-unstyled"><a href="https://github.com/Omsmir" target="_blank"><i class="fa-brands fa-github text-white"></i></a></li>
+                       </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 d-flex">
+                    <div id="content-1">
+                        <div class="text d-flex">
+                            <h2 class="text-uppercase text-white fs-4 mb-3">call us</h2>
+                            <p class="text-white fs-6 mb-1">1 (234) 567-891</p>
+                            <p class="text-white fs-6">1 (234) 987-654</p>
+                            <h2 class="text-uppercase text-white fs-4 mb-3 mt-2">location</h2>
+                            <p class="text-capitilize text-white fs-6 mb-1">121 Rock Sreet, 21 Avenue,</p>
+                            <p class="text-capitilize text-white fs-6 ">New York, NY 92103-9000</p>
+                            <h2 class="text-uppercase text-white fs-4 mt-2 mb-3">Our top services</h2>
+                            <p class="text-capitilize text-white fs-6 mb-1"><i class="fa-solid fa-check me-2"></i>local transfers</p>
+                            <p class="text-capitilize text-white fs-6 mb-1"><i class="fa-solid fa-check me-2"></i>Airport Transfers</p>
+                            <p class="text-capitilize text-white fs-6 mb-1"><i class="fa-solid fa-check me-2"></i>Excursions and Tours</p>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <span id="sendmail" class="d-flex flex-column justify-content-center align-items-center pt-5">
+                    <span class="d-flex justify-content-center align-items-center form mb-3">
+                        <input type="text" min="1" id="name" max="12" placeholder="Enter Your Name" required>
+                        <span class="icon position-relative d-flex justify-content-center align-items-center ">
+                            <i class="fa-solid fa-check position-absolute "></i>
+                            <i class="fa-solid fa-xmark position-absolute "></i>
+                        </span>
+                    </span>
+                    <span class="d-flex justify-content-center align-items-center form mb-3">
+                        <input type="email" min="1" max="50" id="email" placeholder="Enter a Vaild Email" required>
+                        <span class="icon position-relative d-flex justify-content-center align-items-center ">
+                            <i class="fa-solid fa-check position-absolute "></i>
+                            <i class="fa-solid fa-xmark position-absolute "></i>
+                        </span>
+                    </span>
+                    <span class="d-flex justify-content-center align-items-center form mb-3">
+                        <input type="email" min="1" max="50" id="conemail" placeholder="Please Confirm Your Email" required>
+                        <span class="icon position-relative d-flex justify-content-center align-items-center ">
+                            <i class="fa-solid fa-check position-absolute "></i>
+                            <i class="fa-solid fa-xmark position-absolute "></i>
+                        </span>
+                    </span>
+                    <textarea name="text" id="message" cols="5" rows="5" style="resize: none;" class="mb-3" minlength="1" maxlength="150" placeholder="Enter Your Message"></textarea>
+                    <input type="submit" value="submit" id="submit">
+                </span>
+            </div>
+            
+        </div>
+    </div>
+</section>
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+</script>
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

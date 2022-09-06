@@ -7,10 +7,13 @@
   scroll-behavior: smooth;
 }
 
-
+svg {
+  transition: 0.3s ease-in-out;
+}
 section {
   overflow: hidden;
 }
+
 h1::selection,p::selection,h3::selection {
   background:aliceblue;
   color: #c6a41f;
@@ -21,22 +24,172 @@ h1::selection,p::selection,h3::selection {
   background-color: aliceblue !important;
 }
 
-@font-face {
-  font-family: "Mova";
-  src: url(/32-Fruit/fonts/Mova.ttf);
-}
 
 @font-face {
   font-family: "XHARPDemoGradient";
   src: url("/32-Fruit/fonts/XHARPDemoGradient.ttf");
 }
 
+
 body { 
   position: relative;
   font-family: 'Raleway', sans-serif !important;  
   background: linear-gradient(to right,  var(--dark-color) 50%,var(--yellow-color));
-
 }
+
+.over {
+  position: fixed;
+  z-index: 9;
+  width: 100%;
+  height: 100vh;
+  display: none;
+  background: rgba(0,0,0,0.5);
+}
+.over.active {
+  display: block;
+  animation: opacity 1s ease-in-out alternate 1;
+}
+.shopping-cart {
+  display: none;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: 900px;
+  min-height: 400px;
+  right: 50%;
+  transform: translate(50%,25%);
+  background-color: #fff;
+  z-index: 10;
+  user-select: none;
+  transition: 0.3s ease-in-out;
+}
+
+.exit {
+  right: 0;
+  top: 0;
+  padding: 5px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+.exit:hover {
+  background-color: #eee;
+}
+.exit:hover svg {
+  color: var(--green-color);
+}
+.fade-out{
+  animation: fade-out 1s ease-in-out alternate 1;
+}
+
+
+.shopping-cart.active {
+  display: flex;
+  animation: opacity 1s ease-in-out alternate 1;
+}
+.shopping-cart .outer-layer {
+  width: 90%;
+  height: 80%;  
+}
+
+.shopping-cart .head {
+  width: 100%;
+  min-height: 50px;
+  background-color: #eee;
+}
+.shopping-cart .innerLayer  {
+  width: 100%;
+  height: 250px;
+  flex-direction: column;
+  overflow-y: auto;
+  transition: 0.5s ease-in-out;
+}
+
+
+.shopping-cart .head-1 span {
+  width: calc(100% / 4);
+  height: 100%;
+  text-align: center;
+  display: grid;
+  place-content: center;
+  text-transform: uppercase;
+  font-size: 15px;
+}
+.shopping-cart .head-1 { 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+  margin-bottom: 15px;
+}
+
+.shopping-cart .head-1 span[id="Product"] .content {
+  width: 100%;
+}
+.shopping-cart .head-1 span[id="Product"] .content  img {
+  width: 100px;
+}
+.shopping-cart .head-1 span[id="Product"] .content  p {
+  width: 100% !important;
+}
+.shopping-cart .head-1 span[id="Remove"] .delete {
+  width: 30px;
+  height: 30px;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+.shopping-cart .head-1 span[id="Remove"] .delete:hover {
+  background-color: #eee;
+}
+.shopping-cart .head-1 span[id="Remove"] .delete:hover svg {
+  color: var(--green-color);
+}
+.shopping-cart .head-1 span[id='Quantity'] .minus,
+.shopping-cart .head-1 span[id='Quantity'] .plus {
+  width: 20px;
+  height: 15px;
+  cursor: pointer;
+  border-radius: 15px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.1s ease-in-out;
+}
+.shopping-cart .head-1 span[id='Quantity'] .minus:hover {
+  background-color: #af1727 !important;
+  
+}
+.shopping-cart .head-1 span[id='Quantity'] .plus:hover {
+  background-color: #0f6d41 !important;
+  
+}
+.shopping-cart .head-1 span[id='Quantity'] .minus svg,
+.shopping-cart .head-1 span[id='Quantity'] .plus svg {
+  font-size: 9px;
+}
+.shopping-cart #Checkout {
+  background-color: var(--green-color);
+ transition: 0.3s ease-in-out;
+}
+.shopping-cart #Checkout:hover {
+  background-color: #0A66C2;
+}
+.head span:not(:first-of-type) {
+  width: calc(100% / 4);
+  height: 100%;
+  text-align: center;
+  display: grid;
+  place-content: center;
+  text-transform: uppercase;
+  font-size: 15px;
+}
+.head span[id="Product"],.head-1 span[id="Product"]{
+  width: 100% !important;
+  margin-left: 15px;
+}
+
 .main {
   border: none;
   padding: 7px;
@@ -98,6 +251,7 @@ ul li a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: var(--section-color);
 }
 
 
@@ -223,13 +377,13 @@ nav.links ul li a svg {
   font-size: 25px;
   transition: 0.2s ease-in-out;
 }
-nav.links ul li a:hover svg.fa-facebook{
+ul li a:hover svg.fa-facebook{
   color: #0f4cf2 !important;
 }
-nav.links ul li a:hover svg.fa-linkedin{
+ ul li a:hover svg.fa-linkedin{
   color: #0A66C2 !important;
 }
-nav.links ul li a:hover svg.fa-twitter{
+ ul li a:hover svg.fa-twitter{
   color: #0593F9 !important;
 }
 /* Start Products */
@@ -289,6 +443,10 @@ nav.links ul li a:hover svg.fa-twitter{
   align-items: center;
   text-align: center;
 }
+.content .text .sign abbr {
+  cursor: no-drop;
+  
+}
 
 .text aside {
   width: 250px;
@@ -327,9 +485,27 @@ nav.links ul li a:hover svg.fa-twitter{
   background-color: var(--green-color);
   color: #fff;
   font-weight: 700;
-  
+  transition: .15s cubic-bezier(.47,0,.74,.71) 0s;
+}
+.text aside .checkout:hover {
+  background-color: #0A66C2 !important;
 }
 
+/* Start Other Products */
+
+.slider .card {
+  width: 300px;
+  background-color: transparent !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.slider .card .card-body {
+  width: 50%;
+  position: relative;
+  display: block;
+  top: 50%;
+}
 
 /* Sales Start */
 
@@ -392,125 +568,116 @@ section[id="Sales"] .years ul li:hover {
   width: 70px;
 }
 
-@media (max-width:1198px) {
-  canvas {
-    height: 100% !important;
-  }
-  
-}
-@media (max-width: 974px) {
-  form {
-    margin-right: 0rem !important;
-  }
-  ul li {
-    width: 100%;
-    text-align: center;
-  }
-  img.kiwi {
-    width: 100% !important;
-  }
-  .core {
-    flex-direction: column !important;
-  }
-  .inner {
-    width: 100%;
-    margin-bottom: 3rem;
-  }
-  .text p {
-    width: 100%;
-  }
-  header  {
-    width: 100% !important;
-  }
-  .wrapper {
-    width: 100%;
-  }
-  .navbar {
-    background-color: aliceblue;
-  }
-  section[id="Sales"] .years  {
-    margin-top: 30px;
-  }
-  section[id="Sales"] .years ul {
-    flex-direction: row;
-    margin-bottom: 0;
-  }
-  section[id="Sales"] .years ul li {
-    margin-bottom: 0;
-    width: calc(100% /4);
-    border-right: 1px solid var(--green-color);
-    transform: translateY(15px);
-  }
-  section[id="Sales"] .years ul li:hover {
-    width: 25%;
-    transform: translateY(0);
-  }
-  section[id="Sales"] .years ul li.active {
-    width: 25% !important;
-    transform: translateY(0);
-  }
+/* start contact-us */
+section[id="Contact-us"]{
+  background-color: #19818F;
 }
 
-@media (max-width: 767px) {
-  section[id='About']::before {
-    font-size: 125px;
-    left: 25%;
-  }
-  .wrapper #images {
-    height: auto;
-  }
-  canvas {
-    margin-top: 30px;
-  }
+section[id="Contact-us"] #content .text h4 {
+  line-height: 2 !important;
+  font-weight: 600;
 }
 
-@media (max-width:567px){
-  .navbar-brand {
-    margin-left: 2rem;
-  }
-  #images {
-    display: grid;
-    gap: 20px 20px;
-    grid-template-columns: repeat(auto-fill,minmax(150px,auto));
-    justify-content: center;
-    align-items: center;
-  }
-
+section[id="Contact-us"] #content .text p {
+  line-height: 2;
+  font-weight: 500;
+  max-width: 350px;
+  overflow: auto;
 }
 
-@media(max-width:476px) {
-  section[id="About"]::before{
-    font-size: 100px;
-    left: 25%;
-    top: 25%;
-  }
-  .circle {
-    width: 300px !important;
-    height:300px !important;
-  }
-  .circle article h2 {
-    font-size: 18px !important;
-  }
-  .circle article p {
-    font-size: 14px !important;
-  }
+section[id="Contact-us"] #content .social-links ul li a svg {
+  font-size: 20px;
+}
+section[id="Contact-us"] #content-1 {
+  width: 100%;
+  overflow: hidden;
+}
+section[id="Contact-us"] #content-1 .text > * {
+  width: 100%;
+}
+.social-links ul li a .fa-github:hover {
+  color: #000 !important;
+}
+ul li a:hover svg.fa-behance{
+  color: #143e5d !important;
+}
+#sendmail {
+  width: 100%;
 }
 
-@media(max-width:367px) {
-  .text h1 {
-    font-size: 75px;
-  }
-  section[id="About"]::before{
-    font-size: 75px;
-    left: 20%;
-  }
+section[id="Contact-us"] #sendmail> *{
+  width: 80%;
 }
+
+
+section[id="Contact-us"] #sendmail textarea {
+  padding: 10px;
+  padding-left: 15px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: 0.3s ease-in-out;
+}
+section[id="Contact-us"] #sendmail input[type="submit"]{
+  width: 20%;
+  color: #fff;
+  background-color: #000;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  transition: 0.3s ease-in-out;
+}
+section[id="Contact-us"] #sendmail input[type="submit"]:hover {
+  background-color: var(--green-color);
+}
+.form {
+  background-color: #fff;
+  padding: 10px;
+}
+.form input {
+  width: 95%;
+  background-color: transparent;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding-left: 5px;
+}
+
+.form input:focus {
+  outline: none;
+}
+.form .icon{
+  width: 5%;
+}
+.form .icon svg {
+  display: none;
+}
+.form .icon svg.active {
+  display: block;
+  animation: opacity 1s ease-in-out alternate 1;
+}
+
+.form .icon .fa-xmark{
+  color:  #af1727;
+}
+.form .icon .fa-check {
+  color: #0f6d35;
+}
+/* start keyframes */
 @keyframes opacity {
-  from{
+  0%{
     opacity: 0;
   }
-  to {
+  100% {
     opacity: 1;
   }
 
+}
+
+@keyframes fade-out {
+  100% {
+    opacity: 1;
+  }
+  0% {
+    opacity: 0;
+  }
 }
