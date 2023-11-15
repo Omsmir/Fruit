@@ -385,39 +385,69 @@ var typed = new Typed('span.auto', {
 
 
 let opened = false
+
   function openCart(){
    cart.onclick = function (){
     if(shoppingCart.classList.contains("active") && over.classList.contains("active")){
         shoppingCart.classList.remove("active")
-        over.classList.remove("active")
+
         opened = false
     }else {
-        shoppingCart.classList.toggle("active")
-        over.classList.toggle("active")
+        shoppingCart.classList.add("active")
+        over.classList.add("active")
+
+        shoppingCart.style.display = "flex"
+        over.style.display ="flex"
         opened = true
+        console.log(opened)
+
     }
    
    }
 
   }
+  openCart()
 
-  function CloseCart(){
-    exit.onclick = function () {
-        if(opened){
+  $( function() {
+    function runEffect() {   
+        if(shoppingCart.classList.contains("active") && over.classList.contains("active")){
+            $( ".shopping-cart" ).hide( "fade", 1000 );
+            $(".over").hide("fade",1000)
             shoppingCart.classList.remove("active")
             over.classList.remove("active")
         }
-    }
-    over.onclick = function (){
-        if(opened){
-            shoppingCart.classList.remove("active")
-            over.classList.remove("active")
+        // shoppingCart.classList.remove("active")
         }
-    }
-  }
+ 
+ 
+    $( ".exit" ).on( "click", function() {
+      runEffect();
+    
+    });
+    $(".over").on("click",function(){
+        runEffect()
+    })
+   
+  } );
 
-  CloseCart()
-openCart()
+
+//   function CloseCart(){
+//     exit.onclick = function () {
+//         if(opened){
+//             shoppingCart.classList.remove("active")
+//             over.classList.remove("active")
+//         }
+//     }
+//     over.onclick = function (){
+//         if(opened){
+//             shoppingCart.classList.remove("active")
+//             over.classList.remove("active")
+//         }
+//     }
+//   }
+
+//   CloseCart()
+
 
 let submit = document.querySelector("#submit")
 
