@@ -1,3 +1,4 @@
+
 let li = document.querySelectorAll("nav ul li a")
 let image = document.querySelectorAll("#images .pic img")
 
@@ -34,22 +35,25 @@ let head = document.querySelectorAll(".shopping-cart .innerLayer .head-1")
 
 var sumPrice = document.querySelector(".notification")
 
-productInCart = JSON.parse(localStorage.getItem("items"))
+
+let productInCart = JSON.parse(localStorage.items)
 
 if(!productInCart){
     productInCart = []
 }
 
+
 function sumPriceInCart(product){
     let sum = 0
 
-    productInCart.forEach((ele) =>{
-        sum += ele.price
+    productInCart.map((ele) =>{
+        sum += ele.basePrice * ele.count
     })
     return (sum).toFixed(1)
 }
 const updateproductInHtml = () => {
     localStorage.setItem("items",JSON.stringify(productInCart))
+
     if(productInCart.length > 0){
         let result = productInCart.map((product)=>{
             return `
@@ -60,7 +64,7 @@ const updateproductInHtml = () => {
                     <p class="text-black-50 text-capitalize mb-0 ms-3" id="desc">${product.name}</p>
                 </div>
             </span>
-            <span class="list fw-bold" id="Price">$${(product.price).toFixed(1)}</span>
+            <span class="list fw-bold" id="Price">$${((product.basePrice) * product.count).toFixed(1)}</span>
             <span class="list fw-bold d-flex justify-content-center align-items-center" id="Quantity">
             <span class="minus bg-danger me-2" data-id="${product.id}">
                 <i class="fa-solid fa-minus"></i></span> ${product.count} 
@@ -83,14 +87,13 @@ const updateproductInHtml = () => {
     }
 }
 
-console.log(productInCart.length)
+console.log(productInCart)
 
 function updateProductsInCart(product){
+
     for(let i = 0; i < productInCart.length; i++){
         if(productInCart[i].id == product.id){
             productInCart[i].count += product.count
-            productInCart[i].price = product.basePrice * productInCart[i].count
-            productInCart[i].image = product.image
             return 
         }
 
@@ -112,7 +115,7 @@ addToCartButton.addEventListener("click" ,() => {
         price: +productPrice,
         basePrice: +productPrice
     }
-
+    
     updateProductsInCart(products)
     updateproductInHtml()
 
@@ -140,10 +143,10 @@ inner.addEventListener("click" ,(e) =>{
                 productInCart[i].price = productInCart[i].basePrice * productInCart[i].count
             }
             if(productInCart[i].count <= 0){
-                productInCart.splice(i,1)
+                productInCart.splice(0,1)
             }
             if(remove){
-                productInCart.splice(i,1)
+                productInCart.splice(0,1)
             }
         }
         updateproductInHtml()
@@ -154,11 +157,8 @@ updateproductInHtml()
 
 li.forEach((ele) => {
    ele.addEventListener("click" ,() => {
-    if(ele.classList.contains("active")){
-        return true
-
-    }else {
-       removeAllActive()
+    if(!ele.classList.contains("active")){   
+      removeAllActive()
         ele.classList.add("active")
     }
    })
@@ -166,6 +166,37 @@ li.forEach((ele) => {
 
 
 
+let arr = [
+    {
+       id:"1",
+       name: "seedless kiwi - fresh",
+       innerContent: "Buy kiwi, kiwifruit is most often eaten as a snack, it does have many uses. Cross-merchandise it with iced tea, pitchers, berries, fruit salad ingredients and baking goods.",
+       price: "5.50",
+       src: "/imgs/kiwi2.jpg"
+  
+   },
+   {
+       id:"2",
+       name: "Banana fruit - fresh",
+       innerContent: "Buy fresh organic bananas online and add them to your bowl of cereal for a healthy breakfast. Carrying a few bananas in your bag is easy ",
+       price: "7.50",
+       src: "/imgs/banana2.jpg" 
+   },
+   {
+       id:"3",
+       name: "Mango fruit - fresh",
+       innerContent: "Buy Fresh Mangoes Online. Like any fruit or vegetable, fresh mangoes can be difficult to find in the United States if it is not a particular season",
+       price: "15.90",
+       src: "/imgs/mango.jpg" 
+   },
+   {
+       id:"4",
+       name: "seedless watermelon - fresh",
+       innerContent: "Buy apple fruit online, Fresh Fruits Online Shopping, Wholesale Price & Mandi Rate, Seasonal fruits and vegetables from farmer organic fruit vegtable",
+       price: "11",
+       src: "/imgs/watermelon.jpg" 
+   }
+]
 
 image.forEach((ele) => {
 let productName = document.querySelector("#productName")
@@ -174,26 +205,27 @@ let productText = document.querySelector("#productText")
 
 let productPrice = document.querySelector('#productPrice')
 
-let productCount = document.querySelector("#productCount")
+// let productCount = document.querySelector("#productCount")
 
-const name = ele.attributes["data-name"]
-const text = ele.attributes["data-text"]
-const price = ele.attributes["data-price"]
+// const name = ele.attributes["data-name"]
+// const text = ele.attributes["data-text"]
+// const price = ele.attributes["data-price"]
 const productid = ele.attributes["data-product-id"]
 
-
 ele.addEventListener("click" ,() => {
-        if(ele.classList.contains("active")){
-            return true
-        }else {
+        if(!ele.classList.contains("active")){
+  
             removeAllActive(image)
             ele.classList.add("active")
-            headerImage.src = "imgs/" + ele.classList[0] + ".jpg"
-            productName.innerHTML = name.value
-            productName.setAttribute("data-product-id",productid.value)
-            productText.innerHTML = text.value
-            productPrice.innerHTML = price.value
-            productCount.innerHTML = 1
+            for(let i = 0 ; i < arr.length; i++){
+                if(arr[i].id == productid.value){
+                    headerImage.src = arr[i].src
+                    productName.innerHTML = arr[i].name
+                    productName.setAttribute("data-product-id",arr[i].id)
+                    productText.innerHTML = arr[i].innerContent
+                    productPrice.innerHTML = arr[i].price
+                }
+            }
         }
     })
 })
@@ -201,11 +233,8 @@ ele.addEventListener("click" ,() => {
 
 minus.addEventListener("click",() => {
     let n = Number(num.textContent)
-if(n < 10 && n >= 2){
+if( n >= 2){
     n--
-}else if(n == 10){
-    n--
-
 }
 num.textContent = n
 })
@@ -214,9 +243,6 @@ plus.addEventListener("click",() => {
     let n = Number(num.textContent)
     if(n < 10 ){
         n++
-
-    }else if(n == 10){
-        return false
     }
     num.textContent = n
 })
@@ -225,12 +251,11 @@ plus.addEventListener("click",() => {
 
   AOS.init();
 
-console.log(section[2].offsetTop)
+console.log(section[1].offsetTop - section[1].offsetHeight *0.25)
 
  onscroll = function(){
 
     let position = document.documentElement.scrollTop
-
         if(position >= section[1].offsetHeight ) {
                 nav.classList.add("back");
         }else {
@@ -319,35 +344,49 @@ var removeAllActive = function(para){
       }
   });
   
-  console.log(circle)
 
     years.forEach((ele) => {
         ele.addEventListener("click" , () =>{
             if(ele.classList.contains("active")){
-                GenerateData(ele)
-                console.log(ele.attributes.id.value)
-                
+                GenerateData(ele)                
             }else {
               removeAllActive(years)
                 ele.classList.add("active")
                 GenerateData(ele)
-                circle.innerText = `Our Sales ${ele.attributes.id.value}`
-
             }
         })
     })
 
-
+let stats = [
+    {
+        id: "2018",
+        array: [ 185, 1444, 620, 1400, 515, 1745 ],
+    },
+    {
+        id: "2019",
+        array: [ 2540, 199, 1500, 1990, 700, 340 ],
+    }
+    ,    {
+        id: "2020",
+        array: [ 185, 780, 2405, 200, 1500, 604 ],
+    }
+    ,    {
+        id: "2021",
+        array: [ 185, 1825, 500, 1400, 815, 745 ],
+    }
+] 
 
 function GenerateData(id){
-    let select = id.attributes["data-attr"].value
-    
-    
-    let array = select.split(" ").map((ele) => Number(ele))
-    let data = myChart.config.data;
-
-    data.datasets[0].data = array;  
-    
+    let select = id.attributes.id.value
+     
+    for(let i = 0; i < stats.length; i++){
+        if(stats[i].id == select){
+            let data = myChart.config.data;
+      
+            data.datasets[0].data = stats[i].array;  
+            circle.innerText = `Our Sales ${stats[i].id}`
+        }
+    }    
     myChart.update()
  }
 
@@ -427,7 +466,6 @@ let opened = false
     $(".over").on("click",function(){
         runEffect()
     })
-   
   } );
 
 

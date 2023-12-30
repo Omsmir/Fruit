@@ -423,17 +423,38 @@ ul li a:hover svg.fa-facebook{
   height: 150px;
 }
 
+@keyframes fade-in{
+  from{
+    transform: scale(1);
+  }
+  to{
+transform: scale(1.15);
+  }
+}
+@keyframes fade-out-1{
+from {
+transform: scale(1.15);
+}
+to {
+transform: scale(1);
+}
+}
 #images .pic {
   cursor: pointer;
-  transition: 0.1s ease-in-out;
+  transition: 0.5s ease-in-out;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+#images .pic .add-fade {
+  animation: fade-out-1 0.5s ease-in-out alternate 1;
+}
+
 
 #images .pic img.active {
   border: 3px solid var(--green-color);
-  transform: scale(1.1);
+  transform: scale(1.15);
+  animation: fade-in ease-in-out 0.5s alternate 1;
 }
 
 .content .text .sign {
