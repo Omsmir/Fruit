@@ -172,7 +172,7 @@ let arr = [
        name: "seedless kiwi - fresh",
        innerContent: "Buy kiwi, kiwifruit is most often eaten as a snack, it does have many uses. Cross-merchandise it with iced tea, pitchers, berries, fruit salad ingredients and baking goods.",
        price: "5.50",
-       src: "/imgs/kiwi2.jpg"
+       src: "imgs/kiwi2.jpg"
   
    },
    {
@@ -180,21 +180,21 @@ let arr = [
        name: "Banana fruit - fresh",
        innerContent: "Buy fresh organic bananas online and add them to your bowl of cereal for a healthy breakfast. Carrying a few bananas in your bag is easy ",
        price: "7.50",
-       src: "/imgs/banana2.jpg" 
+       src: "imgs/banana2.jpg" 
    },
    {
        id:"3",
        name: "Mango fruit - fresh",
        innerContent: "Buy Fresh Mangoes Online. Like any fruit or vegetable, fresh mangoes can be difficult to find in the United States if it is not a particular season",
        price: "15.90",
-       src: "/imgs/mango.jpg" 
+       src: "imgs/mango.jpg" 
    },
    {
        id:"4",
        name: "seedless watermelon - fresh",
        innerContent: "Buy apple fruit online, Fresh Fruits Online Shopping, Wholesale Price & Mandi Rate, Seasonal fruits and vegetables from farmer organic fruit vegtable",
        price: "11",
-       src: "/imgs/watermelon.jpg" 
+       src: "imgs/watermelon.jpg" 
    }
 ]
 
