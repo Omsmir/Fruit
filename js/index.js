@@ -37,6 +37,12 @@ var sumPrice = document.querySelectorAll(".notification")
 
 let float = document.querySelector("#addToCart .float")
 
+let order = document.querySelector(".order")
+
+order.addEventListener("click",() =>{
+    window.location.href = "#products"
+})
+
 let productInCart = JSON.parse(localStorage.items)
 
 if(!productInCart){
