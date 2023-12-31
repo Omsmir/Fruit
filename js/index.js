@@ -39,7 +39,6 @@ let float = document.querySelector("#addToCart .float")
 
 
 let productInCart = JSON.parse(localStorage.getItem("items"))
-
 if(!productInCart){
     productInCart = []
 }
