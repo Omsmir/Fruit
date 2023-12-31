@@ -59,7 +59,7 @@ body {
   right: 50%;
   transform: translate(50%,25%);
   background-color: #fff;
-  z-index: 10;
+  z-index: 20;
   user-select: none;
 }
 
@@ -164,9 +164,19 @@ body {
   background-color: #0f6d41 !important;
   
 }
-.shopping-cart .head-1 span[id='Quantity'] .minus svg,
-.shopping-cart .head-1 span[id='Quantity'] .plus svg {
-  font-size: 9px;
+.shopping-cart .head-1 span[id='Quantity'] .minus::before {
+  content: "_";
+  position: absolute;
+  font-weight: lighter;
+  font-size: 20px;
+  top: -100%;
+}
+.shopping-cart .head-1 span[id='Quantity'] .plus::before{
+  content: "+";
+  position: absolute;
+  font-weight: lighter;
+  font-size: 20px;
+  top: -48%;
 }
 .shopping-cart #Checkout {
   background-color: var(--green-color);
@@ -189,11 +199,71 @@ body {
   margin-left: 15px;
 }
 
+.mobile-cart{
+  display: none;
+  width: 40px;
+  height: 40px;
+  top: 50%;
+  right: -5px;
+  position: fixed;
+  z-index: 19;
+  transition: 0.3s ease-in-out;
+}
+#mobile-not {
+  transition: 0.3s ease-in-out;
+  font-size: 9px !important;
+}
+.mobile-cart:hover #mobile-not{
+  background-color: #ffff !important;
+  color: #000000 !important;
+}
+.mobile-cart:hover{
+  transform: scale(1.05);
+  background-color: #0593F9 !important;
+  cursor: pointer;
+}
+.mobile-cart svg {
+  transition: 0.3s ease-in-out;
+  width: 18px;
+  height: 18px;
+}
+.mobile-cart:hover svg {
+  color: #fff !important;
+}
 .main {
+  position: relative;
   border: none;
   padding: 7px;
   padding-left: 15px;
   padding-right: 15px;
+}
+#addToCart .float {
+  content: attr(data-before);
+  position: absolute;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  color: #ddd;
+  width: 25px;
+  height: 30px;
+  border-radius: 15px;
+  animation: scroll-top 1000ms linear 1 alternate;
+  background-color: #af1727;
+  left: calc(68px);
+  top: -30px;
+}
+.float.seen{
+  display: flex !important;
+}
+@keyframes scroll-top {
+  from{
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
 }
 .main:focus {
   outline: none;

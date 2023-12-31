@@ -47,7 +47,10 @@
 
 </head>
 <body>
-    <div class="over"></div>  
+    <div class="over"></div> 
+    <span  class="mobile-cart cart-open justify-content-center align-items-center rounded-circle bg-light ">  <i class="fa-solid fa-cart-shopping"></i> 
+        <span id="mobile-not" class="position-absolute top-0  translate-middle badge rounded-pill bg-primary notification">
+        $</span> </span> 
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand " href="#">Fruita</a>
@@ -71,11 +74,13 @@
                 <li class="nav-item">
                 <a class="nav-link" href="#Contact-us" >Contacts</a>
                 </li>
-                
-              <form class="d-flex pcart position-relative">
-    <span class="cart main">My Cart<i class="fa-solid fa-cart-shopping"></i><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary notification">
-        $</span>
-              </form> 
+                <li class="nav-item">
+                    <form class="d-flex pcart justify-content-center align-items-center position-relative">
+                        <span class="cart cart-open main">My Cart<i class="fa-solid fa-cart-shopping"></i><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary notification">
+                            $</span>
+                                  </form> 
+                </li>
+              
             </ul>
           </div>
         </div>
@@ -93,7 +98,7 @@
                     <span class="list fw-bold" id="Remove">Remove</span>
                 </div>
                 <div class="innerLayer mt-2 d-flex justify-content-start align-items-center">
-                    <!-- <div class="head-1">
+                    <div class="head-1">
                     <span class="list fw-bold justify-content-start" id="Product">
                         <div class="content d-flex flex-row justify-content-center align-items-center">
                             <img src="imgs/kiwi2.jpg" class="rounded-2" id="product-img">
@@ -102,10 +107,9 @@
                     </span>
                     <span class="list fw-bold" id="Price">$</span>
                     <span class="list fw-bold d-flex justify-content-center align-items-center" id="Quantity">
-                        <span class="minus bg-danger me-2">
-                            <i class="fa-solid fa-minus"></i></span> 1 
-                            <span class="plus bg-success ms-2">
-                                <i class="fa-solid fa-plus"></i>
+                        <span class="minus bg-danger position-relative me-2">
+                           </span> 1 
+                            <span class="plus bg-success  position-relative ms-2">
                             </span>   
                     </span>
                     <span class="list fw-bold" id="Remove">
@@ -113,7 +117,7 @@
                             <i class="fa-solid fa-trash-can"></i>
                         </div>
                     </span>
-                </div> -->
+                </div>
 
                 </div>          
              </div>
@@ -179,7 +183,7 @@
             <p class="text-black-50 text-capitalize fs-6" id="productText">Buy kiwi, kiwifruit is most often eaten as a snack, it does have many uses. Cross-merchandise it with iced tea, pitchers, berries, fruit salad ingredients and baking goods.</p>
             <aside class="addToCart d-flex">
                 <div class="more"><span class="minus me-3">-</span> <div class="num" id="productCount">1</div> <span class="plus ms-3">+</span></div>
-                <button class="main text-uppercase checkout" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Added">Add to cart </button> 
+                <button class="main text-uppercase checkout" id="addToCart" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Added">Add to cart <div class="float"></div> </button> 
             </aside>
         </div>
         </span>

@@ -7,6 +7,9 @@
   .shopping-cart{
     width: 700px;
   }
+  .mobile-cart {
+    display: flex;
+  }
   .shopping-cart .head span{
     font-size: 13px;
   }

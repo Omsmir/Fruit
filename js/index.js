@@ -19,7 +19,7 @@ let years = document.querySelectorAll(".years ul li")
 
 let circle = document.querySelector(".circle article h2")
 
-let cart = document.querySelector(".cart")
+let cart = document.querySelectorAll(".cart-open")
 
 let shoppingCart = document.querySelector(".shopping-cart")
 
@@ -33,8 +33,9 @@ let addToCartButton = document.querySelector(".checkout")
 
 let head = document.querySelectorAll(".shopping-cart .innerLayer .head-1")
 
-var sumPrice = document.querySelector(".notification")
+var sumPrice = document.querySelectorAll(".notification")
 
+let float = document.querySelector("#addToCart .float")
 
 let productInCart = JSON.parse(localStorage.items)
 
@@ -66,10 +67,9 @@ const updateproductInHtml = () => {
             </span>
             <span class="list fw-bold" id="Price">$${((product.basePrice) * product.count).toFixed(1)}</span>
             <span class="list fw-bold d-flex justify-content-center align-items-center" id="Quantity">
-            <span class="minus bg-danger me-2" data-id="${product.id}">
-                <i class="fa-solid fa-minus"></i></span> ${product.count} 
-                <span class="plus bg-success ms-2" data-id="${product.id}">
-                    <i class="fa-solid fa-plus"></i>
+            <span class="minus bg-danger position-relative me-2" data-id="${product.id}">
+               </span> ${product.count} 
+                <span class="plus bg-success position-relative ms-2"  data-id="${product.id}">
                 </span>   
         </span>
             <span class="list fw-bold" id="Remove">
@@ -79,7 +79,9 @@ const updateproductInHtml = () => {
         </div>`
         })
         inner.innerHTML = result.join("")
-        sumPrice.innerHTML = "$" + sumPriceInCart()
+        sumPrice.forEach((ele) => {
+            ele.innerHTML = "$" + sumPriceInCart()
+        })
 
     }else {
         inner.innerHTML = ""
@@ -101,7 +103,19 @@ function updateProductsInCart(product){
     productInCart.push(product)
 }
 
+let clicked = false
+
+
+function timeOut(ele){
+    setTimeout(() => {
+        if(float.classList.contains("seen")){
+            float.classList.remove("seen")
+        }  
+    },ele)
+}
+
 addToCartButton.addEventListener("click" ,() => {
+    clicked = true
     const productID = document.querySelector("#productName").attributes["data-product-id"].value
     const productName = document.querySelector("#productName").innerHTML
     const productCount = document.querySelector("#productCount").innerHTML
@@ -116,10 +130,25 @@ addToCartButton.addEventListener("click" ,() => {
         basePrice: +productPrice
     }
     
+    float.innerText = productCount
+    if(!float.classList.contains("seen")){
+        float.classList.add("seen")
+    }  
+  
+      let counter =   timeOut(1000)
+    
+        if(addToCartButton.onclick){
+            clearTimeout(counter)
+           timeOut(500)
+        }else {
+            timeOut(500)
+        }
+   
     updateProductsInCart(products)
     updateproductInHtml()
 
 })
+
 
 inner.addEventListener("click" ,(e) =>{
     const plusButton = e.target.classList.contains("plus")
@@ -426,25 +455,29 @@ var typed = new Typed('span.auto', {
 let opened = false
 
   function openCart(){
-   cart.onclick = function (){
-    if(shoppingCart.classList.contains("active") && over.classList.contains("active")){
-        shoppingCart.classList.remove("active")
-
-        opened = false
-    }else {
-        shoppingCart.classList.add("active")
-        over.classList.add("active")
-
-        shoppingCart.style.display = "flex"
-        over.style.display ="flex"
-        opened = true
-        console.log(opened)
-
-    }
+   cart.forEach((ele) => {
+    ele.addEventListener("click", ()  => {
+        if(shoppingCart.classList.contains("active") && over.classList.contains("active")){
+            shoppingCart.classList.remove("active")
+    
+            opened = false
+        }else {
+            shoppingCart.classList.add("active")
+            over.classList.add("active")
+    
+            shoppingCart.style.display = "flex"
+            over.style.display ="flex"
+            opened = true
+            console.log(opened)
+    
+        }
+    } )
+   })
+    
    
    }
 
-  }
+  
   openCart()
 
   $( function() {
